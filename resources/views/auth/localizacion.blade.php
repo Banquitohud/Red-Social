@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
-@section('titulo', 'Localización')
-
+@section('titulo')
+localizacion
+@endsection
 @section('contenido')
-    <div class="container mx-auto p-5">
+<div class="container mx-auto p-5">
         <h2 class="text-2xl font-bold text-center mb-5">Parques y Veterinarias Cercanas</h2>
         <p class="text-center text-gray-600">Descubre parques y veterinarias cerca de tu ubicación.</p>
 

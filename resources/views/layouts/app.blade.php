@@ -42,7 +42,7 @@
                         <img src="{{ asset('img/Home.png') }}" alt="Configuraciones" class="w-10 h-10">
                         <img src="{{ asset('img/mess.png') }}" alt="Mensajes" class="w-10 h-10">
                         <img src="{{ asset('img/settings.png') }}" alt="Configuraciones" class="w-10 h-10">
-                        <a href="{{ route('localizacion') }}">
+                        <a href="{{ route('posts.create1') }}">
                             <img src="{{ asset('img/maps.png') }}" alt="Localización" class="w-10 h-10">
                         </a>
 

@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    //middleware para proteger rutas 
+    //middleware para proteger rutas
     /**
-     * el construc e slo primero que se ejecuta cuanod es instanciado el controlador 
+     * el construc e slo primero que se ejecuta cuanod es instanciado el controlador
     */
     public function __construct()
     {
@@ -41,6 +41,11 @@ class PostController extends Controller
         return view('post.create');
     }
 
+
+    public function create1()
+    {
+        return view('auth.localizacion');
+    }
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -65,7 +70,7 @@ class PostController extends Controller
         $post->user_id = auth()->user()->id;
         $post->save();*/
 
-        //otra forma de crear registro con las relaciones creadas 
+        //otra forma de crear registro con las relaciones creadas
         $request->user()->posts()->create([
             'titulo'=>$request->titulo,
             'descripcion' => $request->descripcion,
@@ -78,7 +83,7 @@ class PostController extends Controller
         return redirect()->route('posts.index', auth()->user()->username);
     }
 
-    public function show(User $user, Post $post) 
+    public function show(User $user, Post $post)
     {
         return view('post.show', [
             'post' => $post,
