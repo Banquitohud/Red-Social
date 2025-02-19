@@ -16,8 +16,10 @@
                 <div class="relative group">
                     <label for="profileImageInput" class="block relative">
 
-                        <img id="profileImage" src="{{ asset('img/pred.png') }}" alt="imagen usuario"
-                            class="w-32 h-32 md:w-48 md:h-48 lg:w-72 lg:h-72 rounded-full object-cover border-4 border-gray-300 shadow-xl">
+                        <img id="profileImage"
+                            src="{{ auth()->user()->Photo_url ? asset(auth()->user()->Photo_url) : asset('img/pred.png') }}"
+                            alt="Imagen usuario"
+                            class="w-32 h-32 md:w-48 md:h-48 lg:w-72 lg:h-72 rounded-full object-cover border-4 border-gray-300 shadow-xl">
 
                         <div
                             class="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -34,6 +36,12 @@
                     class="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 hidden">
                     Guardar Imagen
                 </button>
+                <form action="{{ route('photo') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <label for="photo">Selecciona una imagen:</label>
+                    <input type="file" name="photo" required>
+                    <button type="submit">Actualizar Foto</button>
+                </form>
             </div>
 
             <div
@@ -60,7 +68,7 @@
     <section class="container mx-auto mt-10">
         <h2 class="text-4xl text-center font-black my-10">Publicaciones</h2>
         <!--esta es otra forma sin tener que usar el controlador solo con la relacion de las tablas
-                                se remplaza en todas las sen tencias $user->posts solo que con esta no se puede paginar/{/{$user->posts}/}/-->
+                                        se remplaza en todas las sen tencias $user->posts solo que con esta no se puede paginar/{/{$user->posts}/}/-->
 
 
         @if ($posts->count())
